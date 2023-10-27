@@ -5,7 +5,8 @@ interface PaginationProps {
   currentPage: number;
   totalCount: number;
   perPage?: number;
-  className?: string;
+  prevIcon?: React.ReactNode;
+  nextIcon?: React.ReactNode;
   onPageChange: (page: number) => void;
 }
 
@@ -13,6 +14,8 @@ const Pagination = ({
   currentPage,
   totalCount,
   perPage = 10,
+  prevIcon = "<",
+  nextIcon = ">",
   onPageChange,
 }: PaginationProps) => {
   const totalPages = Math.ceil(totalCount / perPage);
@@ -65,8 +68,7 @@ const Pagination = ({
             onClick={handleClickPrevious}
             disabled={isPreviousDisabled}
           >
-            {/* <i className="fas fa-chevron-left" /> */}
-            {"<"}
+            {prevIcon}
           </button>
         </li>
 
@@ -88,8 +90,7 @@ const Pagination = ({
             onClick={handleClickNext}
             disabled={isNextDisabled}
           >
-            {/* <i className="fas fa-chevron-right" /> */}
-            {">"}
+            {nextIcon}
           </button>
         </li>
       </ul>
