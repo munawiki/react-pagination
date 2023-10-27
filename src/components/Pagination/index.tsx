@@ -18,11 +18,6 @@ const Pagination = ({
   onPageChange,
 }: PaginationProps) => {
   const totalPages = Math.ceil(totalCount / perPage);
-  // currentPage=1, limit=3, totalpages=6    // [1,2,3,...,6]
-  // currentPage=4, limit=3, totalpages=6    // [1,...,4,5,6]
-  // currentPage=1, limit=3, totalpages=7    // [1,2,3,...,7]
-  // currentPage=4, limit=3, totalpages=7    // [1,...,4,5,6,...,7]
-  // currentPage=7, limit=3, totalpages=99    // [1,...,4,5,6,...,99]
 
   const pages = useMemo(() => {
     let startPage: number;
