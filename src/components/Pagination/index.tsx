@@ -19,25 +19,24 @@ const Pagination = ({
 }: PaginationProps) => {
   const totalPages = Math.ceil(totalCount / perPage);
 
-  // currentPage=1, limit=5, totalPages=10    // [1,2,3,4,5,...,10]
-  // currentPage=2, limit=5, totalPages=10    // [1,2,3,4,5,...,10]
-  // currentPage=3, limit=5, totalPages=10    // [1,2,3,4,5,...,10]
-  // currentPage=4, limit=5, totalPages=10    // [1,2,3,4,5,...,10]
-  // currentPage=5, limit=5, totalPages=10    // [1,...,4,5,6,...,10]
-  // currentPage=6, limit=5, totalPages=10    // [1,...,5,6,7,...,10]
-  // currentPage=7, limit=5, totalPages=10    // [1,...,6,7,8,9,10]
-  // currentPage=8, limit=5, totalPages=10    // [1,...,6,7,8,9,10]
-  // currentPage=9, limit=5, totalPages=10    // [1,...,6,7,8,9,10]
-  // currentPage=10, limit=5, totalPages=10    // [1,...,6,7,8,9,10]
-
-  // currentPage=1, limit=5, totalPages=8    // [1,2,3,4,5,...,8]
-  // currentPage=2, limit=5, totalPages=8    // [1,2,3,4,5,...,8]
-  // currentPage=3, limit=5, totalPages=8    // [1,2,3,4,5,...,8]
-  // currentPage=4, limit=5, totalPages=8    // [1,2,3,4,5,...,8]
-  // currentPage=5, limit=5, totalPages=8    // [1,...,4,5,6,7,8]
-  // currentPage=6, limit=5, totalPages=8    // [1,...,4,5,6,7,8]
-  // currentPage=7, limit=5, totalPages=8    // [1,...,4,5,6,7,8]
-  // currentPage=8, limit=5, totalPages=8    // [1,...,4,5,6,7,8]
+  // currentPage=1, limit=5, totalPages=10 [1,2,3,4,5,...,10]
+  // currentPage=2, limit=5, totalPages=10 [1,2,3,4,5,...,10]
+  // currentPage=3, limit=5, totalPages=10 [1,2,3,4,5,...,10]
+  // currentPage=4, limit=5, totalPages=10 [1,2,3,4,5,...,10]
+  // currentPage=5, limit=5, totalPages=10 [1,...,4,5,6,...,10]
+  // currentPage=6, limit=5, totalPages=10 [1,...,5,6,7,...,10]
+  // currentPage=7, limit=5, totalPages=10 [1,...,6,7,8,9,10]
+  // currentPage=8, limit=5, totalPages=10 [1,...,6,7,8,9,10]
+  // currentPage=9, limit=5, totalPages=10 [1,...,6,7,8,9,10]
+  // currentPage=10, limit=5, totalPages=10 [1,...,6,7,8,9,10]
+  // currentPage=1, limit=5, totalPages=8 [1,2,3,4,5,...,8]
+  // currentPage=2, limit=5, totalPages=8 [1,2,3,4,5,...,8]
+  // currentPage=3, limit=5, totalPages=8 [1,2,3,4,5,...,8]
+  // currentPage=4, limit=5, totalPages=8 [1,2,3,4,5,...,8]
+  // currentPage=5, limit=5, totalPages=8 [1,...,4,5,6,7,8]
+  // currentPage=6, limit=5, totalPages=8 [1,...,4,5,6,7,8]
+  // currentPage=7, limit=5, totalPages=8 [1,...,4,5,6,7,8]
+  // currentPage=8, limit=5, totalPages=8 [1,...,4,5,6,7,8]
 
   const pages = useMemo(() => {}, [currentPage, limit, totalPages]);
 
