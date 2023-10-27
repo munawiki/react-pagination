@@ -9,9 +9,8 @@ function App() {
       <Pagination
         currentPage={currentPage}
         onPageChange={setCurrentPage}
-        totalCount={100}
+        totalCount={10}
         perPage={10}
-        limit={5}
       />
     </>
   );

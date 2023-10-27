@@ -5,7 +5,6 @@ interface PaginationProps {
   currentPage: number;
   totalCount: number;
   perPage?: number;
-  limit?: number;
   className?: string;
   onPageChange: (page: number) => void;
 }
@@ -14,31 +13,29 @@ const Pagination = ({
   currentPage,
   totalCount,
   perPage = 10,
-  limit = 5,
   onPageChange,
 }: PaginationProps) => {
   const totalPages = Math.ceil(totalCount / perPage);
 
-  // currentPage=1, limit=5, totalPages=10 [1,2,3,4,5,...,10]
-  // currentPage=2, limit=5, totalPages=10 [1,2,3,4,5,...,10]
-  // currentPage=3, limit=5, totalPages=10 [1,2,3,4,5,...,10]
-  // currentPage=4, limit=5, totalPages=10 [1,2,3,4,5,...,10]
-  // currentPage=5, limit=5, totalPages=10 [1,...,4,5,6,...,10]
-  // currentPage=6, limit=5, totalPages=10 [1,...,5,6,7,...,10]
-  // currentPage=7, limit=5, totalPages=10 [1,...,6,7,8,9,10]
-  // currentPage=8, limit=5, totalPages=10 [1,...,6,7,8,9,10]
-  // currentPage=9, limit=5, totalPages=10 [1,...,6,7,8,9,10]
-  // currentPage=10, limit=5, totalPages=10 [1,...,6,7,8,9,10]
-  // currentPage=1, limit=5, totalPages=8 [1,2,3,4,5,...,8]
-  // currentPage=2, limit=5, totalPages=8 [1,2,3,4,5,...,8]
-  // currentPage=3, limit=5, totalPages=8 [1,2,3,4,5,...,8]
-  // currentPage=4, limit=5, totalPages=8 [1,2,3,4,5,...,8]
-  // currentPage=5, limit=5, totalPages=8 [1,...,4,5,6,7,8]
-  // currentPage=6, limit=5, totalPages=8 [1,...,4,5,6,7,8]
-  // currentPage=7, limit=5, totalPages=8 [1,...,4,5,6,7,8]
-  // currentPage=8, limit=5, totalPages=8 [1,...,4,5,6,7,8]
-
-  const pages = useMemo(() => {}, [currentPage, limit, totalPages]);
+  const pages = useMemo(() => {
+    const pagesArray = [];
+    if (totalPages <= 5 || currentPage <= 4) {
+      for (let i = 1; i <= Math.min(5, totalPages); i++) {
+        pagesArray.push(i);
+      }
+      if (totalPages > 5) pagesArray.push("...", totalPages);
+    } else if (currentPage >= totalPages - 3) {
+      pagesArray.push(1, "...");
+      for (let i = totalPages - 4; i <= totalPages; i++) {
+        pagesArray.push(i);
+      }
+    } else {
+      pagesArray.push(1, "...");
+      pagesArray.push(currentPage - 1, currentPage, currentPage + 1);
+      pagesArray.push("...", totalPages);
+    }
+    return pagesArray;
+  }, [currentPage, totalPages]);
 
   const goToPage = (page: number) => onPageChange(page);
   const goToPreviousPage = () => goToPage(currentPage - 1);
