@@ -19,39 +19,27 @@ const Pagination = ({
 }: PaginationProps) => {
   const totalPages = Math.ceil(totalCount / perPage);
 
-  const pages = useMemo(() => {
-    let startPage: number;
-    let endPage: number;
+  // currentPage=1, limit=5, totalPages=10    // [1,2,3,4,5,...,10]
+  // currentPage=2, limit=5, totalPages=10    // [1,2,3,4,5,...,10]
+  // currentPage=3, limit=5, totalPages=10    // [1,2,3,4,5,...,10]
+  // currentPage=4, limit=5, totalPages=10    // [1,2,3,4,5,...,10]
+  // currentPage=5, limit=5, totalPages=10    // [1,...,4,5,6,...,10]
+  // currentPage=6, limit=5, totalPages=10    // [1,...,5,6,7,...,10]
+  // currentPage=7, limit=5, totalPages=10    // [1,...,6,7,8,9,10]
+  // currentPage=8, limit=5, totalPages=10    // [1,...,6,7,8,9,10]
+  // currentPage=9, limit=5, totalPages=10    // [1,...,6,7,8,9,10]
+  // currentPage=10, limit=5, totalPages=10    // [1,...,6,7,8,9,10]
 
-    if (totalPages <= limit + 1) {
-      startPage = 1;
-      endPage = Math.min(limit, totalPages);
-    } else {
-      if (currentPage <= Math.floor(limit / 2) + 1) {
-        startPage = 1;
-        endPage = limit;
-      } else if (currentPage >= totalPages - Math.floor(limit / 2)) {
-        startPage = totalPages - limit + 1;
-        endPage = totalPages;
-      } else {
-        startPage = currentPage - Math.floor(limit / 2);
-        endPage = currentPage + Math.floor(limit / 2);
-      }
-    }
+  // currentPage=1, limit=5, totalPages=8    // [1,2,3,4,5,...,8]
+  // currentPage=2, limit=5, totalPages=8    // [1,2,3,4,5,...,8]
+  // currentPage=3, limit=5, totalPages=8    // [1,2,3,4,5,...,8]
+  // currentPage=4, limit=5, totalPages=8    // [1,2,3,4,5,...,8]
+  // currentPage=5, limit=5, totalPages=8    // [1,...,4,5,6,7,8]
+  // currentPage=6, limit=5, totalPages=8    // [1,...,4,5,6,7,8]
+  // currentPage=7, limit=5, totalPages=8    // [1,...,4,5,6,7,8]
+  // currentPage=8, limit=5, totalPages=8    // [1,...,4,5,6,7,8]
 
-    const pages = [];
-    for (let i = startPage; i <= endPage; i++) {
-      pages.push(i);
-    }
-
-    if (startPage > 2) pages.unshift(1, "...");
-    else if (startPage === 2) pages.unshift(1);
-
-    if (endPage < totalPages - 1) pages.push("...", totalPages);
-    else if (endPage === totalPages - 1) pages.push(totalPages);
-
-    return pages;
-  }, [currentPage, limit, totalPages]);
+  const pages = useMemo(() => {}, [currentPage, limit, totalPages]);
 
   const goToPage = (page: number) => onPageChange(page);
   const goToPreviousPage = () => goToPage(currentPage - 1);
