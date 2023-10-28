@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import "./index.css";
+import styles from "./Pagination.module.css";
 
 interface PaginationProps {
   currentPage: number;
@@ -60,11 +60,14 @@ const Pagination = ({
   const isNextDisabled = currentPage === totalPages;
 
   return (
-    <div className="pagination">
-      <ul className="pagination__list" onClick={handleClickPaginationList}>
-        <li className="pagination__item">
+    <div className={styles.pagination}>
+      <ul
+        className={styles["pagination__list"]}
+        onClick={handleClickPaginationList}
+      >
+        <li className={styles["pagination__item"]}>
           <button
-            className="pagination__button"
+            className={styles["pagination__button"]}
             onClick={handleClickPrevious}
             disabled={isPreviousDisabled}
           >
@@ -75,18 +78,18 @@ const Pagination = ({
         {pages.map((page, index) => (
           <li
             key={index}
-            className={`pagination__item ${
-              page === currentPage ? "pagination__item--active" : ""
+            className={`${styles["pagination__item"]} ${
+              styles[page === currentPage ? "pagination__item--active" : ""]
             }`}
             data-index={page !== "..." ? page : undefined}
           >
-            <button className="pagination__button">{page}</button>
+            <button className={styles["pagination__button"]}>{page}</button>
           </li>
         ))}
 
-        <li className="pagination__item">
+        <li className={styles["pagination__item"]}>
           <button
-            className="pagination__button"
+            className={styles["pagination__button"]}
             onClick={handleClickNext}
             disabled={isNextDisabled}
           >
