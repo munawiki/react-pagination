@@ -1,8 +1,7 @@
 {
   "name": "@munawiki/react-pagination",
   "private": false,
-  "version": "1.0.1",
-  "description": "A React component for pagination.",
+  "version": "1.0.2",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -11,14 +10,6 @@
     "type": "git"
   },
   "author": "munawiki",
-  "license": "MIT",
-  "keywords": [
-    "react",
-    "pagination",
-    "component",
-    "ui",
-    "library"
-  ],
   "files": [
     "dist"
   ],
@@ -27,15 +18,19 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc --p ./tsconfig-build.json && vite build",
+    "build": "tsc --p ./tsconfig-build.json && vite build --optimizeDeps && vite compress",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "test": "jest",
+    "postinstall": "npm run build",
+    "clean": "rimraf dist && rimraf .vite"
   },
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "@types/node": "^20.8.9",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
@@ -49,6 +44,9 @@
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vite-plugin-dts": "^3.6.2",
-    "vite-plugin-lib-inject-css": "^1.3.0"
+    "vite-plugin-lib-inject-css": "^1.3.0",
+    "jest": "^30.0.0",
+    "ts-jest": "^30.0.0",
+    "rimraf": "^3.0.2"
   }
 }
