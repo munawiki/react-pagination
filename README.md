@@ -1,8 +1,10 @@
-# @munawiki/react-pagination
+## `@munawiki/react-pagination`
 
-A customizable pagination component library built with React and TypeScript.
+A React and TypeScript-based library offering a customizable pagination component.
 
-## Installation
+### **Installation**
+
+Install the library using npm or yarn:
 
 ```bash
 npm install @munawiki/react-pagination
@@ -10,9 +12,9 @@ npm install @munawiki/react-pagination
 yarn add @munawiki/react-pagination
 ```
 
-## Peer Dependencies
+### **Peer Dependencies**
 
-Ensure you have the peer dependencies installed:
+Ensure these dependencies are in your project:
 
 ```bash
 npm install react@^18.2.0 react-dom@^18.2.0
@@ -20,76 +22,66 @@ npm install react@^18.2.0 react-dom@^18.2.0
 yarn add react@^18.2.0 react-dom@^18.2.0
 ```
 
-## Usage
+### **How to Use**
 
-Import and use the `Pagination` component in your React project.
+Simply import the `Pagination` component and integrate it:
 
 ```jsx
 import Pagination from "@munawiki/react-pagination";
 
-// In your component
-<Pagination
-  currentPage={1}
-  totalCount={100}
-  onPageChange={(page) => console.log("Current Page:", page)}
-/>;
+function YourComponent() {
+  return (
+    <Pagination
+      currentPage={1}
+      totalCount={100}
+      onPageChange={(page) => console.log("Switched to Page:", page)}
+    />
+  );
+}
 ```
 
-### Props
+### **Component Properties**
 
-| Prop         | Type                   | Default | Description                               |
-| ------------ | ---------------------- | ------- | ----------------------------------------- |
-| currentPage  | number                 |         | The current active page.                  |
-| totalCount   | number                 |         | Total number of items.                    |
-| perPage      | number                 | 10      | Items per page.                           |
-| prevIcon     | React.ReactNode        | "<"     | Icon for the Previous button.             |
-| nextIcon     | React.ReactNode        | ">"     | Icon for the Next button.                 |
-| onPageChange | (page: number) => void |         | Callback when the page number is changed. |
+|   Property   |          Type          | Default |         Description          |
+| :----------: | :--------------------: | :-----: | :--------------------------: |
+| currentPage  |         number         |    -    |         Active page.         |
+|  totalCount  |         number         |    -    |         Total items.         |
+|   perPage    |         number         |   10    |       Items per page.        |
+|   prevIcon   |    React.ReactNode     |   "<"   |    Previous button icon.     |
+|   nextIcon   |    React.ReactNode     |   ">"   |      Next button icon.       |
+| onPageChange | (page: number) => void |    -    | Triggered when page changes. |
 
-### Styling
+### **Custom Styling**
 
-Override the CSS classes defined in `Pagination.module.css` to customize the styling to your preference.
+To customize the look, override classes from `Pagination.module.css`.
 
-## Development
+### **Development Guidelines**
 
-Clone the repository and install the dependencies:
+1. **Setup**:
 
-```bash
-git clone https://github.com/munawiki/react-pagination.git
-cd react-pagination
-npm install
-# or
-yarn install
-```
+   ```bash
+   git clone https://github.com/munawiki/react-pagination.git
+   cd react-pagination
+   npm install
+   ```
 
-Run the development server:
+2. **Running Locally**:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+   ```bash
+   npm run dev
+   ```
 
-### Building
+3. **Build**:
 
-Build the library:
+   ```bash
+   npm run build
+   ```
 
-```bash
-npm run build
-# or
-yarn build
-```
+4. **Lint**:
+   ```bash
+   npm run lint
+   ```
 
-### Linting
+### **Contribute**
 
-Lint the codebase:
-
-```bash
-npm run lint
-# or
-yarn lint
-```
-
-## Contributing
-
-Feel free to open issues or PRs for any bugs or improvements.
+We welcome contributions! Feel free to open issues or submit PRs for enhancements.
