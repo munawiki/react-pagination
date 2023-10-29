@@ -2,9 +2,23 @@
   "name": "@munawiki/react-pagination",
   "private": false,
   "version": "1.0.1",
+  "description": "A React component for pagination.",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
+  "repository": {
+    "url": "https://github.com/munawiki/react-pagination",
+    "type": "git"
+  },
+  "author": "munawiki",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "pagination",
+    "component",
+    "ui",
+    "library"
+  ],
   "files": [
     "dist"
   ],
@@ -22,8 +36,6 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "@types/node": "^20.8.9",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
