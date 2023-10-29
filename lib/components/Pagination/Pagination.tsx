@@ -7,6 +7,12 @@ interface PaginationProps {
   perPage?: number;
   prevIcon?: React.ReactNode;
   nextIcon?: React.ReactNode;
+  customStyles?: {
+    pagination?: string;
+    pagination__list?: string;
+    pagination__item?: string;
+    pagination__button?: string;
+  };
   onPageChange: (page: number) => void;
 }
 
@@ -16,6 +22,7 @@ const Pagination = ({
   perPage = 10,
   prevIcon = "<",
   nextIcon = ">",
+  customStyles,
   onPageChange,
 }: PaginationProps) => {
   const totalPages = Math.ceil(totalCount / perPage);
@@ -60,14 +67,16 @@ const Pagination = ({
   const isNextDisabled = currentPage === totalPages;
 
   return (
-    <div className={styles.pagination}>
+    <div className={`${styles["pagination"]} ${customStyles?.pagination}`}>
       <ul
-        className={styles["pagination__list"]}
+        className={`${styles["pagination__list"]} ${customStyles?.pagination__list}`}
         onClick={handleClickPaginationList}
       >
-        <li className={styles["pagination__item"]}>
+        <li
+          className={`${styles["pagination__item"]} ${customStyles?.pagination__item}`}
+        >
           <button
-            className={styles["pagination__button"]}
+            className={`${styles["pagination__button"]} ${customStyles?.pagination__button}`}
             onClick={handleClickPrevious}
             disabled={isPreviousDisabled}
           >
@@ -79,17 +88,29 @@ const Pagination = ({
           <li
             key={index}
             className={`${styles["pagination__item"]} ${
-              styles[page === currentPage ? "pagination__item--active" : ""]
+              customStyles?.pagination__item
+            } ${
+              page === currentPage
+                ? `${styles["pagination__item--active"]} ${
+                    customStyles?.pagination__item + "--active"
+                  }`
+                : ""
             }`}
             data-index={page !== "..." ? page : undefined}
           >
-            <button className={styles["pagination__button"]}>{page}</button>
+            <button
+              className={`${styles["pagination__button"]} ${customStyles?.pagination__button}`}
+            >
+              {page}
+            </button>
           </li>
         ))}
 
-        <li className={styles["pagination__item"]}>
+        <li
+          className={`${styles["pagination__item"]} ${customStyles?.pagination__item}`}
+        >
           <button
-            className={styles["pagination__button"]}
+            className={`${styles["pagination__button"]} ${customStyles?.pagination__button}`}
             onClick={handleClickNext}
             disabled={isNextDisabled}
           >
