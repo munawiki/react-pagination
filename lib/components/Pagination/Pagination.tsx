@@ -33,16 +33,16 @@ const Pagination = ({
       for (let i = 1; i <= Math.min(5, totalPages); i++) {
         pagesArray.push(i);
       }
-      if (totalPages > 5) pagesArray.push("...", totalPages);
+      if (totalPages > 5) pagesArray.push("+1", totalPages);
     } else if (currentPage >= totalPages - 3) {
-      pagesArray.push(1, "...");
+      pagesArray.push(1, "-1");
       for (let i = totalPages - 4; i <= totalPages; i++) {
         pagesArray.push(i);
       }
     } else {
-      pagesArray.push(1, "...");
+      pagesArray.push(1, "-1");
       pagesArray.push(currentPage - 1, currentPage, currentPage + 1);
-      pagesArray.push("...", totalPages);
+      pagesArray.push("+1", totalPages);
     }
     return pagesArray;
   }, [currentPage, totalPages]);
@@ -59,6 +59,16 @@ const Pagination = ({
     const target = event.target as HTMLElement;
     const page = target.closest("li");
     const index = page?.dataset.index;
+
+    if (index === "-1") {
+      goToPreviousPage();
+      return;
+    }
+
+    if (index === "+1") {
+      goToNextPage();
+      return;
+    }
 
     if (index !== undefined) goToPage(Number(index));
   };
@@ -96,12 +106,12 @@ const Pagination = ({
                   }`
                 : ""
             }`}
-            data-index={page !== "..." ? page : undefined}
+            data-index={page}
           >
             <button
               className={`${styles["pagination__button"]} ${customStyles?.pagination__button}`}
             >
-              {page}
+              {page === "-1" || page === "+1" ? "..." : page}
             </button>
           </li>
         ))}
